@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fokusin — Aplikasi Fokus</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== BACKGROUND UNIK: AURORA BLOB ===== -->
+  <div class="bg">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <div class="grain"></div>
+  </div>
+
+  <main class="app">
+
+    <!-- ===== HEADER ===== -->
+    <header>
+      <h1>🎯 Fokusin</h1>
+      <p class="tagline">Satu sesi. Satu tujuan. Tanpa distraksi.</p>
+    </header>
+
+    <!-- ===== TIMER ===== -->
+    <section class="card timer-card">
+      <div class="modes">
+        <button class="mode active" data-min="25" data-label="Fokus">Fokus 25</button>
+        <button class="mode" data-min="5" data-label="Istirahat">Istirahat 5</button>
+        <button class="mode" data-min="50" data-label="Fokus">Deep Work 50</button>
+      </div>
+
+      <div class="ring">
+        <svg viewBox="0 0 220 220">
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7c5cff" />
+              <stop offset="100%" stop-color="#22d3ee" />
+            </linearGradient>
+          </defs>
+          <circle class="ring-bg" cx="110" cy="110" r="96"></circle>
+          <circle class="ring-progress" id="ringProgress" cx="110" cy="110" r="96"></circle>
+        </svg>
+
+        <div class="time-wrap">
+          <div id="time">25:00</div>
+          <div id="status">Siap mulai</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="btn primary">Mulai</button>
+        <button id="resetBtn" class="btn ghost">Reset</button>
+      </div>
+    </section>
+
+    <!-- ===== 2 KOLOM: BLOKIR + STATISTIK ===== -->
+    <div class="grid-2">
+
+      <!-- Blokir distraksi -->
+      <section class="card" id="blockCard">
+        <h2>🚫 Blokir Distraksi</h2>
+        <p class="hint">Daftar hal yang mau kamu hindari selama fokus.</p>
+
+        <form id="blockForm">
+          <input
+            type="text"
+            id="blockInput"
+            placeholder="contoh: instagram, game, youtube"
+            maxlength="30"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn small" id="addBtn">Tambah</button>
+        </form>
+
+        <ul id="blockList" class="block-list"></ul>
+
+        <p id="lockNote" class="lock-note">🔒 Daftar terkunci selama timer berjalan</p>
+      </section>
+
+      <!-- Statistik -->
+      <section class="card">
+        <h2>📊 Statistik</h2>
+        <p class="hint">Tersimpan otomatis di browser kamu.</p>
+
+        <div class="stats">
+          <div class="stat">
+            <span id="statSessions">0</span>
+            <small>Sesi selesai</small>
+          </div>
+          <div class="stat">
+            <span id="statMinutes">0</span>
+            <small>Menit fokus</small>
+          </div>
+          <div class="stat">
+            <span id="statDistract">0</span>
+            <small>Distraksi</small>
+          </div>
+        </div>
+
+        <button id="resetStats" class="btn ghost small">Reset statistik</button>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+  </html>
